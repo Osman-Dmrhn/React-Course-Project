@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Card,CardText,CardBody,CardSubtitle,CardTitle, Row ,Col} from "reactstrap";
+import { Card,CardText,CardBody,CardSubtitle,CardTitle, Row ,Col,Button} from "reactstrap";
 
-export default class ProductList extends Component {
+export default class ProductList extends Component { 
   render() {
     return (
       <div>
@@ -22,6 +22,7 @@ export default class ProductList extends Component {
             <CardText>
               {product.unitPrice}
             </CardText>
+            <Button color="primary" onClick={()=>this.props.addToCart(product)}>Sepete Ekle</Button>
           </CardBody>
         </Card>
         </Col>
