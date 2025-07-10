@@ -5,6 +5,7 @@ export default class ProductList extends Component {
   render() {
     return (
       <div>
+        <h3>Ürünler</h3>
         <Row>
         {this.props.products.map((product) => (
             <Col sm="4" key={product.id}>

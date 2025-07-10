@@ -7,12 +7,9 @@ import {
   Nav,
   NavItem,
   NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
   NavbarText,
 } from 'reactstrap';
+import CartSummary from "./CartSummary";
 
 export default class Navi extends Component {
   constructor(props) {
@@ -28,8 +25,7 @@ export default class Navi extends Component {
 
   render() {
     const { brandName = "ReactApp", navItems = ["Sepet"], text } = this.props;
-
-    const cartItems = this.props.cart && Array.isArray(this.props.cart) ? this.props.cart : [];
+ 
 
     return (
       <div>
@@ -44,23 +40,7 @@ export default class Navi extends Component {
                     <NavLink href={item.href}>{item.text}</NavLink>
                   </NavItem>
                 ))}
-
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Sepet ({this.props.cart.length})
-                </DropdownToggle>
-                <DropdownMenu right>
-                  {cartItems.length > 0 ? (
-                    cartItems.map((item, index) => (
-                      <DropdownItem key={index}>
-                        {item.product.productName} ({item.quantity})
-                      </DropdownItem>
-                    ))
-                  ) : (
-                    <DropdownItem>Sepetiniz Boş</DropdownItem>
-                  )}
-                </DropdownMenu>
-              </UncontrolledDropdown>
+                <CartSummary removeFromCart={this.props.removeFromCart} cart={this.props.cart} ></CartSummary>            
             </Nav>
             <NavbarText>{text}</NavbarText>
           </Collapse>
